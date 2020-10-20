@@ -3,51 +3,51 @@ package lista;
 public interface TListaMiniProjeto {
 
 	/**
-	 * esse método insere a entrada na lista. No caso de listas ordenadas, a inserção
-	 * acontece na posição adequada. No caso de listas desordenadas, a inserção acontece 
+	 * esse metodo insere a entrada na lista. No caso de listas ordenadas, a insercao
+	 * acontece na posicao adequada. No caso de listas desordenadas, a insercao acontece 
 	 * no final da lista.
 	 * @param s valor a ser guardado na lista
-	 * @throws Exception não deve ser possível inserir valores repetidos dentro da lista
+	 * @throws Exception nao deve ser possivel inserir valores repetidos dentro da lista
 	 */
 	public void add(String s) throws Exception;
 	
 	/**
-	 * o método remove o elemento que está guardado no índice passado por parâmetro (começando de 0)
-	 * @param i índice do qual o elemento será removido
+	 * o metodo remove o elemento que esta guardado no indice passado por parametro (comecando de 0)
+	 * @param indice do qual o elemento sera removido
 	 * @return retorna o elemento que foi removido da lista
-	 * @throws Exception o método lança uma exceção caso o índice passado não exista na lista atualmente
+	 * @throws Exception o mï¿½todo lanca uma excecao caso o indice passado nao exista na lista atualmente
 	 */
 	public String removeIndex(int i) throws Exception;
 	
 	/**
-	 * o método remove da lista o elemento que foi passado por parâmetro
+	 * o metodo remove da lista o elemento que foi passado por parametro
 	 * @param s elemento a ser removido da lista
-	 * @throws Exception o método lança uma exceção caso o elemento não faça parte da lista
+	 * @throws Exception o metodo lanca uma excecao caso o elemento nï¿½o faca parte da lista
 	 */
 	public void removeElem(String s) throws Exception;
 	
 	/**
 	 * retorna o antecessor de um elemento na lista
 	 * @param s elemento que se deseja consultar o antecessor
-	 * @return o método retorna o antecessor do elemento passado por parâmetro
-	 * @throws Exception o método lança uma exceção caso o elemento recebido por parâmetro 
-	 * não faça parte da lista ou não possua antecessor (seja o primeiro)
+	 * @return o metodo retorna o antecessor do elemento passado por parametro
+	 * @throws Exception o metodo lanca uma excecao caso o elemento recebido por parametro 
+	 * nao faca parte da lista ou nao possua antecessor (seja o primeiro)
 	 */
 	public String previous(String s) throws Exception;
 	
 	/**
-	 * o método retorna o índice do elemento recebido por parâmetro dentro da lista (começando de 0)
-	 * @param s elemento que se deseja consultar o índice
-	 * @return retorna o índice do elemento recebido por parâmetro
-	 * @throws Exception lança uma exceção caso o elemento recebido não faça parte da lista
+	 * o metodo retorna o indice do elemento recebido por parametro dentro da lista (comecando de 0)
+	 * @param s elemento que se deseja consultar o ï¿½ndice
+	 * @return retorna o indice do elemento recebido por parï¿½metro
+	 * @throws Exception lanca uma excecao caso o elemento recebido nao faca parte da lista
 	 */
 	public int index(String s) throws Exception;
 	
 	/**
-	 * o método retorna o elemento da lista que está posicionado no índice recebido por parâmetro (começando de 0)
-	 * @param i índice cujo elemento se deseja consultar
-	 * @return reteorna o elemento da lista que está posicionado no índice recebido
-	 * @throws Exception lança uma xceção caso a lista não possua esse índice
+	 * o metodo retorna o elemento da lista que esta posicionado no indice recebido por parï¿½metro (comecando de 0)
+	 * @param i indice cujo elemento se deseja consultar
+	 * @return reteorna o elemento da lista que esta posicionado no indice recebido
+	 * @throws Exception lanca uma excecao caso a lista nao possua esse indice
 	 */
 	public String elemen(int i) throws Exception;
 
@@ -62,12 +62,12 @@ public interface TListaMiniProjeto {
 	public String first();
 
 	/**
-	 * @return retorna o último elemento da lista (null caso a lista esteja vazia)
+	 * @return retorna o ultimo elemento da lista (null caso a lista esteja vazia)
 	 */
 	public String last();
 
 	/**
-	 * imprimi no console a lista dos elementos, seguindo o seguinte padrão:
+	 * imprimi no console a lista dos elementos, seguindo o seguinte padrao:
 	 * (lista com elementos) LISTA -> "ABC" -> "BCA" -> NULL
 	 * (lista vazia) LISTA -> NULL
 	 */
