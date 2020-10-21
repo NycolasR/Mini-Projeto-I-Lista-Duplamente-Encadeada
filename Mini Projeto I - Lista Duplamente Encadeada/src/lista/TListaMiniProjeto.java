@@ -37,14 +37,14 @@ public interface TListaMiniProjeto {
 	
 	/**
 	 * o metodo retorna o indice do elemento recebido por parametro dentro da lista (comecando de 0)
-	 * @param s elemento que se deseja consultar o �ndice
-	 * @return retorna o indice do elemento recebido por par�metro
+	 * @param s elemento que se deseja consultar o indice
+	 * @return retorna o indice do elemento recebido por parametro
 	 * @throws Exception lanca uma excecao caso o elemento recebido nao faca parte da lista
 	 */
 	public int index(String s) throws Exception;
 	
 	/**
-	 * o metodo retorna o elemento da lista que esta posicionado no indice recebido por par�metro (comecando de 0)
+	 * o metodo retorna o elemento da lista que esta posicionado no indice recebido por parametro (comecando de 0)
 	 * @param i indice cujo elemento se deseja consultar
 	 * @return reteorna o elemento da lista que esta posicionado no indice recebido
 	 * @throws Exception lanca uma excecao caso a lista nao possua esse indice
