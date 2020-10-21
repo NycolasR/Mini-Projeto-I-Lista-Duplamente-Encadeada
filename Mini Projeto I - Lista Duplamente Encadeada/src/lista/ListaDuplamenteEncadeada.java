@@ -29,7 +29,6 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 			throw new Exception("Elemento não encontrado na lista");
 		}
 		
-		Node anterior = null;
 		Node aux = initialNode;
 		while(aux != null) {
 			if(aux.getDado().equals(s)) {
@@ -37,14 +36,13 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 					initialNode = initialNode.getNextNode();
 					initialNode.setPreviousNode(null);
 				} else {
-					aux.getNextNode().setPreviousNode(anterior);
-					anterior.setNextNode(aux.getNextNode());
+					aux.getNextNode().setPreviousNode(aux.getPreviousNode());
+					aux.getPreviousNode().setNextNode(aux.getNextNode());
 				}
 				aux.setPreviousNode(null); // O elemento a ser removido perde a referência para seu antecessor
 				aux.setNextNode(null); // A referência do auxiliar para seu próximo deve ser perdida
 				size--; // Se um elemento for removido, o valor de size deve perder uma unidade
 			}
-			anterior = aux;
 			aux = aux.getNextNode();
 		}
 	}
@@ -56,6 +54,7 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 	 */
 	private boolean isNodePresente(String s) {
 		try {
+			validarSize();
 			index(s);
 			return true;
 		} catch (Exception e) {
@@ -66,16 +65,18 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 	@Override // Implementado usar apontador para Node anterior
 	public String previous(String s) throws Exception {
 		validarSize();
-		int index = index(s);
 		
-		Node previous = null;
-		Node aux = initialNode;
-		
-		for(int i = 0; i < index; i++) {
-			previous = aux;
-			aux = aux.getNextNode();
+		if(isNodePresente(s)) {
+			Node aux = initialNode;
+			
+			while(aux != null) {
+				if(aux.getDado().equals(s))
+					return aux.getPreviousNode().getDado();
+				
+				aux = aux.getNextNode();
+			}
 		}
-		return previous.getDado();
+		throw new Exception("Elemento não encontrado na lista");
 	}
 	
 	/**
