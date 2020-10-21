@@ -16,12 +16,17 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 		
 		Node node = new Node(s);
 		Node aux = initialNode;
-		while(aux.getNextNode() != null) {
-			aux = aux.getNextNode();
-		}
 		
-		aux.setNextNode(node);
-		node.setPreviousNode(aux);
+		if(size == 0) {	// Insersão no começo
+			initialNode = node;
+			node.setPreviousNode(null);
+		} else { // Insersão nas demais posições
+			while(aux.getNextNode() != null) {
+				aux = aux.getNextNode();
+			}
+			aux.setNextNode(node);
+			node.setPreviousNode(aux);
+		}
 		size++;
 	}
 
@@ -36,6 +41,7 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 				removeElem(aux.getDado());
 				return removido.getDado();
 			}
+			aux = aux.getNextNode();
 		}
 		return null;
 	}
@@ -53,10 +59,17 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 				if(aux == initialNode) { // Se o elemento a ser removido for o inicial
 					initialNode = initialNode.getNextNode();
 					initialNode.setPreviousNode(null);
-				} else {
+				
+				} else if(aux.getNextNode() == null) { // Se o elemento a ser removido for o último
+					aux.getPreviousNode().setNextNode(null);
+					
+				} else { // Se o elemento a ser removido for um intermediário
 					aux.getNextNode().setPreviousNode(aux.getPreviousNode());
 					aux.getPreviousNode().setNextNode(aux.getNextNode());
 				}
+				
+				// Para concluir a remoção (tanto do primeiro, ultimo ou intermediário) do elemento,
+				// é conveniente fazer seus apontadores apontar para null.
 				aux.setPreviousNode(null); // O elemento a ser removido perde a referência para seu antecessor
 				aux.setNextNode(null); // A referência do auxiliar para seu próximo deve ser perdida
 				size--; // Se um elemento for removido, o valor de size deve perder uma unidade
@@ -175,7 +188,52 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 	}
 	
 	public static void main(String[] args) {
-		ListaDuplamenteEncadeada l = new ListaDuplamenteEncadeada();
-		System.out.println(l.size());
+		
+		ListaDuplamenteEncadeada encadeada = new ListaDuplamenteEncadeada();
+		Node node0 = new Node("n");
+		Node node1 = new Node("y");
+		Node node2 = new Node("c");
+		Node node3 = new Node("o");
+		Node node4 = new Node("l");
+		Node node5 = new Node("a");
+		Node node6 = new Node("s");
+		
+		node0.setNextNode(node1);
+		node1.setNextNode(node2);
+		node2.setNextNode(node3);
+		node3.setNextNode(node4);
+		node4.setNextNode(node5);
+		node5.setNextNode(node6);
+		
+		node1.setPreviousNode(node0);
+		node2.setPreviousNode(node1);
+		node3.setPreviousNode(node2);
+		node4.setPreviousNode(node3);
+		node5.setPreviousNode(node4);
+		node6.setPreviousNode(node5);
+		
+		encadeada.initialNode = node0;
+		encadeada.print();
+		encadeada.size = 7;
+		try {
+			System.out.println(encadeada.removeIndex(6));
+			encadeada.print();
+			System.out.println(encadeada.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

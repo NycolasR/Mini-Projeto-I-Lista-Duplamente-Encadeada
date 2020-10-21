@@ -60,7 +60,7 @@ public class ProgramaListaMiniProjeto {
 			System.out.println("Primeiro: " + lista.first());
 			break;
 		case "9":
-			System.out.println("ultimo: " + lista.first());
+			System.out.println("ultimo: " + lista.last());
 			break;
 		case "0":
 			lista.print();
