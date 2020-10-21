@@ -35,6 +35,7 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 			if(aux.getDado().equals(s)) {
 				if(aux == initialNode) { // Se o elemento a ser removido for o inicial
 					initialNode = initialNode.getNextNode();
+					initialNode.setPreviousNode(null);
 				} else {
 					aux.getNextNode().setPreviousNode(anterior);
 					anterior.setNextNode(aux.getNextNode());
