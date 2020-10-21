@@ -8,21 +8,39 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 	// A cada incremento ou decremento na lista, atualiza-se o valor deste atributo
 	private int size;
 	
-	@Override
+	@Override // Implementado
 	public void add(String s) throws Exception {
 		if(isNodePresente(s)) {
 			throw new Exception("Elemento já presente na lista");
 		}
+		
+		Node node = new Node(s);
+		Node aux = initialNode;
+		while(aux.getNextNode() != null) {
+			aux = aux.getNextNode();
+		}
+		
+		aux.setNextNode(node);
+		node.setPreviousNode(aux);
+		size++;
 	}
 
-	@Override
+	@Override // Implementado
 	public String removeIndex(int i) throws Exception {
 		validarSize();
 		
+		Node aux = initialNode;
+		for (int j = 0; j <= i; j++) {
+			if(j == i) {
+				Node removido = aux;
+				removeElem(aux.getDado());
+				return removido.getDado();
+			}
+		}
 		return null;
 	}
 
-	@Override // Implementado TODO testar com urgência
+	@Override // Implementado
 	public void removeElem(String s) throws Exception {
 		validarSize();
 		if(!isNodePresente(s)) {
@@ -62,7 +80,7 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 		}
 	}
 
-	@Override // Implementado usar apontador para Node anterior
+	@Override // Implementado
 	public String previous(String s) throws Exception {
 		validarSize();
 		

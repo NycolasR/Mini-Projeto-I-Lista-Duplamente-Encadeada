@@ -15,14 +15,14 @@ public interface TListaMiniProjeto {
 	 * o metodo remove o elemento que esta guardado no indice passado por parametro (comecando de 0)
 	 * @param indice do qual o elemento sera removido
 	 * @return retorna o elemento que foi removido da lista
-	 * @throws Exception o m�todo lanca uma excecao caso o indice passado nao exista na lista atualmente
+	 * @throws Exception o metodo lanca uma excecao caso o indice passado nao exista na lista atualmente
 	 */
 	public String removeIndex(int i) throws Exception;
 	
 	/**
 	 * o metodo remove da lista o elemento que foi passado por parametro
 	 * @param s elemento a ser removido da lista
-	 * @throws Exception o metodo lanca uma excecao caso o elemento n�o faca parte da lista
+	 * @throws Exception o metodo lanca uma excecao caso o elemento nao faca parte da lista
 	 */
 	public void removeElem(String s) throws Exception;
 	
