@@ -8,20 +8,29 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 	@Override
 	public void add(String s) throws Exception {
 		Node node = new Node(s);
-		Node aux = initialNode;
 		
 		if(size() == 0) { // Insersão no começo
 			initialNode = node;
 			node.setPreviousNode(null);
 			
-		} else { // Insersão nas demais posições
+		} else { // Insersão nas demais posições			
+			Node aux = initialNode;
 			
-			while(aux.getNextNode() != null) {
+			if(size() == 1 && aux.getDado().equals(s)) { // Valida insersão na segunda posição
+				throw new Exception("Elemento já presente na lista");
 				
-				if(aux.getDado().equals(s))
-					throw new Exception("Elemento já presente na lista");
-				aux = aux.getNextNode();
+			} else {				
+				while(true) {
+					
+					if(aux.getDado().equals(s))
+						throw new Exception("Elemento já presente na lista");
+					
+					if(aux.getNextNode() == null)
+						break;
+					aux = aux.getNextNode();
+				}
 			}
+			
 			aux.setNextNode(node);
 			node.setPreviousNode(aux);
 		}
@@ -29,8 +38,9 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 
 	@Override
 	public String removeIndex(int i) throws Exception {
-		validarSize();
-		
+		if(i >= size() || i < 0)
+			throw new Exception("Esta lista não possui este índice");
+			
 		Node aux = initialNode;
 		for (int j = 0; j <= i; j++) {
 			if(j == i) {

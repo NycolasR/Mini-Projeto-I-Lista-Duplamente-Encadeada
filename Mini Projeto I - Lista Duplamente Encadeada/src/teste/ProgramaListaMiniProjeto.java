@@ -7,12 +7,9 @@ import lista.TListaMiniProjeto;
 
 public class ProgramaListaMiniProjeto {
 
-	private static String[] opcoes = {
-			"1 - adicionar", "2 - excluir indice",
-			"3 - excluir elemento", "4 - anterior",
-			"5 - consultar posicao de um elemento", "6 - consultar elemento de uma posicao", 
-			"7 - consultar tamanho", "8 - imprimir o primeiro",
-			"9 - imprimir o ultimo","0 - imprimir a lista", 
+	private static String[] opcoes = {"1 - adicionar", "2 - excluir índice", "3 - excluir elemento", 
+			"4 - anterior","5 - consultar posição de um elemento", "6 - consultar elemento de uma posição", 
+			"7 - consultar tamanho", "8 - imprimir o primeiro", "9 - imprimir o último","0 - imprimir a lista", 
 			"s - sair"};	
 	
 	private static String menu(Scanner leitor) {
@@ -63,19 +60,19 @@ public class ProgramaListaMiniProjeto {
 			System.out.println("Primeiro: " + lista.first());
 			break;
 		case "9":
-			System.out.println("Último: " + lista.last());
+			System.out.println("último: " + lista.last());
 			break;
 		case "0":
 			lista.print();
 			break;
 		default:
-			throw new Exception("Opcao inválida");
+			throw new Exception("Opção inválida");
 		}
 	}
 	
 	public static void main(String[] args) {
 		TListaMiniProjeto lista = new ListaDuplamenteEncadeada();
-		Scanner leitor = new Scanner(System.in);	
+		Scanner leitor = new Scanner(System.in);
 		
 		String opcao = menu(leitor);
 		
@@ -87,12 +84,12 @@ public class ProgramaListaMiniProjeto {
 				System.out.println(e.getMessage());
 			}
 			
-			opcao = menu(leitor);		
+			opcao = menu(leitor);
 			
 		}
 		
 		System.out.println("Fim de Programa");
 		lista.print();
+		leitor.close();
 	}
-	
 }
