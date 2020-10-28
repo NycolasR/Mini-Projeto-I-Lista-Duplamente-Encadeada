@@ -61,7 +61,9 @@ public class ListaDuplamenteEncadeada implements TListaMiniProjeto {
 	private void excluirNode(Node node) {
 		if(node == initialNode) { // Se o elemento a ser removido for o inicial
 			initialNode = initialNode.getNextNode();
-		
+			if(initialNode != null)
+				initialNode.setPreviousNode(null);
+			
 		} else if(node.getNextNode() == null) { // Se o elemento a ser removido for o último
 			node.getPreviousNode().setNextNode(null);
 			
